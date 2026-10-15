@@ -77,3 +77,15 @@ class ReleaseCliTests(unittest.TestCase):
                            capture_output=True, env=env)
         self.assertEqual(p.returncode, 0, p.stderr)
         self.assertIn(b'\\u2603', p.stdout)
+
+    def test_scanner_handles_english_windows_and_ascii_terminals(self):
+        import os
+        for encoding in ('cp1252:strict', 'ascii:strict'):
+            with self.subTest(encoding=encoding):
+                env = dict(os.environ, PYTHONIOENCODING=encoding)
+                for target, expected in ((self.old, 0), (self.root / 'missing.zip', 2)):
+                    proc = subprocess.run(
+                        [sys.executable, '-m', 'addoncheck.scanner', str(target)],
+                        capture_output=True, env=env)
+                    self.assertEqual(proc.returncode, expected, proc.stderr)
+                    self.assertNotIn(b'UnicodeEncodeError', proc.stderr)
