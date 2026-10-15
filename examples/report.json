@@ -1,0 +1,231 @@
+{
+  "schema_version": "comparison-0.1",
+  "old_root": "demo-old/",
+  "new_root": "demo-new/",
+  "warnings": [
+    "先确认旧新版属于同一个插件及正确版本；本工具不能核验来源或发布者身份。",
+    "只比较已读取文件的字节，不判断语义等价或风险变化；内容相同不代表安全。",
+    "仅一侧读到不等于真实新增/删除；不识别文件重命名。默认排除的目录不在对比范围。",
+    "代码线索仅覆盖有限的 UTF-8 .gd/.cs API；资源、原生库、动态行为未作完整分析。",
+    "用户选择剥离公共目录：旧 demo-old/；新 demo-new/。请确认此路径映射合理。"
+  ],
+  "old": {
+    "schema_version": "0.3",
+    "generated_at_utc": "2026-10-15T14:42:56+00:00",
+    "target_name": "old.zip",
+    "input_kind": "zip",
+    "files_seen": 3,
+    "files_scanned": 3,
+    "bytes_read": 67,
+    "limited": false,
+    "license_files": [
+      "demo-old/LICENSE"
+    ],
+    "findings": [
+      {
+        "code": "editor_tool_script",
+        "severity": "info",
+        "title": "编辑器工具脚本（常见机制）",
+        "path": "demo-old/main.gd",
+        "line": 1,
+        "evidence": "（源码证据默认隐藏）",
+        "note": "@tool 或 [Tool] 脚本可能在编辑器中运行，也可能改动场景；先在副本或版本控制下查看入口和副作用。"
+      }
+    ],
+    "limitations": [
+      "本工具只提供静态线索，不是安全审计、恶意软件检测或许可证法律意见。",
+      "不执行、不导入、不启用插件；不访问网络，也不把项目内容上传。",
+      "使用简化词法过滤；不解析类型、数据流或跨文件封装，动态调用及特殊字符串语法仍可能漏报或误报。",
+      "FileAccess 的模式参数最多检查 4,096 个字符；变量模式、C# 插值表达式等不在完整支持范围。",
+      "API 线索仅检查 UTF-8 的 .gd/.cs 文件；默认跳过 .git、.godot、.import、node_modules、.venv 和 __pycache__。",
+      "商店 AI 披露字段、远端仓库、发布者身份及 Godot 版本兼容性未经联网核实。"
+    ],
+    "incomplete": false,
+    "scanner_version": "0.4.1a1",
+    "ruleset_version": "godot-text-r4",
+    "input_sha256": "b00c06b107800120652ac7de25c8ad414b75c9d0f560d2c07b5b02dead6d4f27",
+    "fingerprint_scope": "完整 ZIP 字节快照",
+    "scripts_checked": 1,
+    "file_manifest": [
+      {
+        "path": "demo-old/plugin.cfg",
+        "sha256": "b9f48e76499b901f4525cfe8958dbfd1738e0ba9465b68b23149865e4c4273b7",
+        "bytes_read": 37,
+        "complete": true
+      },
+      {
+        "path": "demo-old/LICENSE",
+        "sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+        "bytes_read": 3,
+        "complete": true
+      },
+      {
+        "path": "demo-old/main.gd",
+        "sha256": "6fb839da6dc825be4e2ccaeb13e29809e8389ded7afcf9be4d9f1c0fc3979184",
+        "bytes_read": 27,
+        "complete": true
+      }
+    ],
+    "source_evidence_included": false
+  },
+  "new": {
+    "schema_version": "0.3",
+    "generated_at_utc": "2026-10-15T14:42:56+00:00",
+    "target_name": "new.zip",
+    "input_kind": "zip",
+    "files_seen": 3,
+    "files_scanned": 3,
+    "bytes_read": 166,
+    "limited": false,
+    "license_files": [
+      "demo-new/LICENSE"
+    ],
+    "findings": [
+      {
+        "code": "editor_tool_script",
+        "severity": "info",
+        "title": "编辑器工具脚本（常见机制）",
+        "path": "demo-new/main.gd",
+        "line": 1,
+        "evidence": "（源码证据默认隐藏）",
+        "note": "@tool 或 [Tool] 脚本可能在编辑器中运行，也可能改动场景；先在副本或版本控制下查看入口和副作用。"
+      },
+      {
+        "code": "process_api",
+        "severity": "review",
+        "title": "引用了外部进程或 shell API",
+        "path": "demo-new/main.gd",
+        "line": 5,
+        "evidence": "（源码证据默认隐藏）",
+        "note": "核对启动的程序、参数和输入来源；确认是否符合插件用途。"
+      }
+    ],
+    "limitations": [
+      "本工具只提供静态线索，不是安全审计、恶意软件检测或许可证法律意见。",
+      "不执行、不导入、不启用插件；不访问网络，也不把项目内容上传。",
+      "使用简化词法过滤；不解析类型、数据流或跨文件封装，动态调用及特殊字符串语法仍可能漏报或误报。",
+      "FileAccess 的模式参数最多检查 4,096 个字符；变量模式、C# 插值表达式等不在完整支持范围。",
+      "API 线索仅检查 UTF-8 的 .gd/.cs 文件；默认跳过 .git、.godot、.import、node_modules、.venv 和 __pycache__。",
+      "商店 AI 披露字段、远端仓库、发布者身份及 Godot 版本兼容性未经联网核实。"
+    ],
+    "incomplete": false,
+    "scanner_version": "0.4.1a1",
+    "ruleset_version": "godot-text-r4",
+    "input_sha256": "2ff49b7d30f477ffd35048a809031444fe2bf68cd3793dbe7acdfcb92ab35bfa",
+    "fingerprint_scope": "完整 ZIP 字节快照",
+    "scripts_checked": 1,
+    "file_manifest": [
+      {
+        "path": "demo-new/plugin.cfg",
+        "sha256": "b9f48e76499b901f4525cfe8958dbfd1738e0ba9465b68b23149865e4c4273b7",
+        "bytes_read": 37,
+        "complete": true
+      },
+      {
+        "path": "demo-new/LICENSE",
+        "sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+        "bytes_read": 3,
+        "complete": true
+      },
+      {
+        "path": "demo-new/main.gd",
+        "sha256": "f4ed18a1211bd410b2bf54dbe9a0f1dcc0bf1957b587cfd753c1c9e33e5b5a60",
+        "bytes_read": 126,
+        "complete": true
+      }
+    ],
+    "source_evidence_included": false
+  },
+  "files": [
+    {
+      "path": "LICENSE",
+      "status": "same",
+      "old_file": {
+        "path": "demo-old/LICENSE",
+        "sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+        "bytes_read": 3,
+        "complete": true
+      },
+      "new_file": {
+        "path": "demo-new/LICENSE",
+        "sha256": "e5dcffe836b6ec8a58e492419b550e65fb8cbdc308503979e5dacb33ac7ea3b7",
+        "bytes_read": 3,
+        "complete": true
+      },
+      "old_findings": [],
+      "new_findings": [],
+      "diff_preview": "",
+      "diff_note": "非两侧完整读取的内容变化文件，不生成差异预览。"
+    },
+    {
+      "path": "main.gd",
+      "status": "changed",
+      "old_file": {
+        "path": "demo-old/main.gd",
+        "sha256": "6fb839da6dc825be4e2ccaeb13e29809e8389ded7afcf9be4d9f1c0fc3979184",
+        "bytes_read": 27,
+        "complete": true
+      },
+      "new_file": {
+        "path": "demo-new/main.gd",
+        "sha256": "f4ed18a1211bd410b2bf54dbe9a0f1dcc0bf1957b587cfd753c1c9e33e5b5a60",
+        "bytes_read": 126,
+        "complete": true
+      },
+      "old_findings": [
+        {
+          "code": "editor_tool_script",
+          "severity": "info",
+          "title": "编辑器工具脚本（常见机制）",
+          "path": "demo-old/main.gd",
+          "line": 1,
+          "evidence": "（源码证据默认隐藏）",
+          "note": "@tool 或 [Tool] 脚本可能在编辑器中运行，也可能改动场景；先在副本或版本控制下查看入口和副作用。"
+        }
+      ],
+      "new_findings": [
+        {
+          "code": "editor_tool_script",
+          "severity": "info",
+          "title": "编辑器工具脚本（常见机制）",
+          "path": "demo-new/main.gd",
+          "line": 1,
+          "evidence": "（源码证据默认隐藏）",
+          "note": "@tool 或 [Tool] 脚本可能在编辑器中运行，也可能改动场景；先在副本或版本控制下查看入口和副作用。"
+        },
+        {
+          "code": "process_api",
+          "severity": "review",
+          "title": "引用了外部进程或 shell API",
+          "path": "demo-new/main.gd",
+          "line": 5,
+          "evidence": "（源码证据默认隐藏）",
+          "note": "核对启动的程序、参数和输入来源；确认是否符合插件用途。"
+        }
+      ],
+      "diff_preview": "（源码差异默认隐藏）",
+      "diff_note": "UTF-8 文本差异预览；不做语义判断。"
+    },
+    {
+      "path": "plugin.cfg",
+      "status": "same",
+      "old_file": {
+        "path": "demo-old/plugin.cfg",
+        "sha256": "b9f48e76499b901f4525cfe8958dbfd1738e0ba9465b68b23149865e4c4273b7",
+        "bytes_read": 37,
+        "complete": true
+      },
+      "new_file": {
+        "path": "demo-new/plugin.cfg",
+        "sha256": "b9f48e76499b901f4525cfe8958dbfd1738e0ba9465b68b23149865e4c4273b7",
+        "bytes_read": 37,
+        "complete": true
+      },
+      "old_findings": [],
+      "new_findings": [],
+      "diff_preview": "",
+      "diff_note": "非两侧完整读取的内容变化文件，不生成差异预览。"
+    }
+  ],
+  "source_evidence_included": false
+}
