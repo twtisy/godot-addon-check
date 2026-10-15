@@ -1,0 +1,14 @@
+name: Tried an add-on upgrade
+description: Tell us what worked or got in your way
+body:
+  - type: textarea
+    attributes:
+      label: What were you comparing?
+      description: Public package/version names, or a synthetic example. No private files.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: What helped or confused you? Would you use it again?
+    validations:
+      required: true
