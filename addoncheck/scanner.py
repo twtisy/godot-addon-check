@@ -907,6 +907,9 @@ def _bounded_arg(parser: argparse.ArgumentParser, value: str, maximum: int, name
 
 
 def main(argv: Iterable[str] | None = None) -> int:
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, 'reconfigure'):
+            stream.reconfigure(errors='backslashreplace')
     parser = argparse.ArgumentParser(
         description="只读扫描 Godot 插件目录或 ZIP；不解压、不执行、不联网。"
     )
