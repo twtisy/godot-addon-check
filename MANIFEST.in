@@ -1,0 +1,6 @@
+include LICENSE README.md CHANGELOG.md CONTRIBUTING.md SECURITY.md
+recursive-include tests *.py
+recursive-include examples *.zip *.svg *.txt *.html *.json
+prune .git
+prune build
+prune dist

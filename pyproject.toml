@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "godot-addon-check"
+version = "0.4.1a1"
+description = "Compare old/new Godot add-on ZIPs without running plugins"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []
+classifiers = ["Development Status :: 3 - Alpha", "Programming Language :: Python :: 3"]
+[project.scripts]
+addoncheck = "addoncheck.compare:main"
+addoncheck-scan = "addoncheck.scanner:main"
+[project.gui-scripts]
+addoncheck-gui = "addoncheck.desktop:main"
+addoncheck-compare-gui = "addoncheck.compare_window:main"
+[tool.setuptools]
+packages = ["addoncheck"]
+[project.urls]
+Repository = "https://github.com/BobbyJia-shuai/godot-addon-check"
+Issues = "https://github.com/BobbyJia-shuai/godot-addon-check/issues"
